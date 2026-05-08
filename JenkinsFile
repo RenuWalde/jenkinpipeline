@@ -1,32 +1,25 @@
 pipeline {
-
     agent any
- 
-    stages {
-
-        stage('Checkout') {
-
-            steps {
-
-                checkout scm 
-
-            }
-
-        }
- 
-        stage('Build') {
-
-            steps {
-
-                bat 'mvn clean package -DskipTests'  
-
-            }
-
-        }
- 
-        
-
+    
+    tools {
+        maven 'Maven 3.x' 
+        jdk 'Java 17' 
     }
 
-}
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm 
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'mvn clean package -DskipTests'  
+            }
+        }
  
+
+       
+    }
+}
