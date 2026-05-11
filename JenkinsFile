@@ -4,9 +4,9 @@ pipeline {
 
     tools {
 
-        maven 'Maven 3.x' 
+        maven 'Maven' 
 
-        jdk 'Java 17' 
+        jdk 'JDK_HOME' 
 
     }
  
