@@ -1,6 +1,14 @@
 pipeline {
 
     agent any
+
+    tools {
+
+        maven 'Maven 3.x' 
+
+        jdk 'Java 17' 
+
+    }
  
     stages {
 
@@ -24,7 +32,25 @@ pipeline {
 
         }
  
-        
+        stage('Test') {
+
+            steps {
+
+                bat 'mvn test' 
+
+            }
+
+        }
+ 
+        stage('Artifact Archiving') {
+
+            steps {
+
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+
+            }
+
+        }
 
     }
 
